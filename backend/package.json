@@ -1,0 +1,27 @@
+{
+  "name": "limoncontrol-backend",
+  "version": "1.0.0",
+  "private": true,
+  "description": "API de LimonControl - gestion de venta de limones (POS, inventario, clientes, reportes)",
+  "type": "commonjs",
+  "scripts": {
+    "dev": "nodemon --watch src --exec ts-node src/index.ts",
+    "build": "tsc -p tsconfig.json",
+    "start": "node dist/index.js",
+    "db:init": "node -e \"require('dotenv').config(); const fs=require('fs'); const mysql=require('mysql2/promise'); (async()=>{ const conn = await mysql.createConnection({host:process.env.DB_HOST||'localhost', port:Number(process.env.DB_PORT||3306), user:process.env.DB_USER||'root', password:process.env.DB_PASSWORD||'', multipleStatements:true}); const sql = fs.readFileSync('./schema.sql','utf8'); await conn.query(sql); console.log('Base de datos y tablas creadas correctamente.'); await conn.end(); })().catch(e=>{console.error(e); process.exit(1);});\""
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "mysql2": "^3.11.0"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.17",
+    "@types/express": "^4.17.21",
+    "@types/node": "^20.14.9",
+    "nodemon": "^3.1.4",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.5.3"
+  }
+}
