@@ -3,12 +3,12 @@
   "version": "1.0.0",
   "private": true,
   "description": "API de LimonControl - gestion de venta de limones (POS, inventario, clientes, reportes)",
-  "type": "module",
+  "type": "commonjs",
   "engines": {
     "node": "20.x"
   },
   "scripts": {
-    "dev": "nodemon --watch src --exec ts-node --esm src/index.ts",
+    "dev": "nodemon --watch src --exec ts-node src/index.ts",
     "build": "tsc -p tsconfig.json",
     "start": "node dist/index.js",
     "db:init": "node -e \"require('dotenv').config(); const fs=require('fs'); const mysql=require('mysql2/promise'); (async()=>{ const conn = await mysql.createConnection({host:process.env.DB_HOST||'localhost', port:Number(process.env.DB_PORT||3306), user:process.env.DB_USER||'root', password:process.env.DB_PASSWORD||'', multipleStatements:true}); const sql = fs.readFileSync('./schema.sql','utf8'); await conn.query(sql); console.log('Base de datos y tablas creadas correctamente.'); await conn.end(); })().catch(e=>{console.error(e); process.exit(1);});\""
