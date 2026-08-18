@@ -10,7 +10,7 @@
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "resolveJsonModule": true,
-    "moduleResolution": "node",  // ← cambiar de "node10" a "node"
+    "moduleResolution": "node10",  // ← cambiar de "node10" a "node"
     "ignoreDeprecations": "6.0"
   },
   "include": ["src"]
