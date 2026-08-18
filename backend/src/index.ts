@@ -4,7 +4,7 @@ import dotenv from "dotenv";
 import { productosRouter } from "./routes/productos";
 import { ventasRouter } from "./routes/ventas";
 import { clientesRouter } from "./routes/clientes";
-import { reportesRouter } from "./routes/Reportes";
+import { reportesRouter } from "./routes/reportes";
 
 dotenv.config();
 
